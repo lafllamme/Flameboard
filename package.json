@@ -1,0 +1,38 @@
+{
+  "version": "0.0.0",
+  "scripts": {
+    "serve": "vite preview",
+    "build": "vue-tsc --noEmit && vite build",
+    "build-storybook": "build-storybook",
+    "dev": "vite",
+    "storybook": "start-storybook -p 6006"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.0.0",
+    "firebase": "^8.6.8",
+    "jquery": "^3.6.0",
+    "quasar": "^2.0.0-beta.1",
+    "three": "^0.129.0",
+    "vue": "^3.0.5",
+    "vue-router": "4",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@storybook/addon-actions": "^6.3.0",
+    "@storybook/addon-essentials": "^6.3.0",
+    "@storybook/addon-links": "^6.3.0",
+    "@storybook/vue3": "^6.3.0",
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.0.5",
+    "babel-loader": "^8.2.2",
+    "prettier-eslint": "^12.0.0",
+    "sass": "1.32.12",
+    "sass-loader": "^10.1.0",
+    "typescript": "^4.3.2",
+    "vite": "^2.3.8",
+    "vue-cli-plugin-quasar": "^4.0.0",
+    "vue-loader": "^16.2.0",
+    "vue-tsc": "^0.0.24"
+  }
+}
