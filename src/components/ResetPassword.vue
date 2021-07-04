@@ -9,68 +9,58 @@
         :rules="[(val) => (val && val.length > 0) || 'Please type your email']"
       />
 
-      <q-input
-        filled
-        type="password"
-        v-model="password"
-        label="Your password *"
-        lazy-rules
-        :rules="[
-          (val) => (val !== null && val !== '') || 'Please type your password',
-        ]"
+      <q-toggle
+        @click="enable"
+        v-model="accept"
+        label="I accept the license and terms"
       />
-
-      <q-toggle v-model="accept" label="I accept the license and terms" />
 
       <div>
         <q-btn
-          @click="loginUser"
-          label="Submit"
+          @click="forgetPassword"
+          :disable="isDisabled"
+          label="Reset"
           type="submit"
           color="primary"
-        />
-        <q-btn
-          @click="reset"
-          label="Reset"
-          type="reset"
-          color="primary"
-          flat
-          class="q-ml-sm"
         />
       </div>
     </q-form>
   </div>
 </template>
+
 <script>
-import { useQuasar } from "quasar";
-import { ref } from "vue";
 import firebase from "firebase";
+import { ref } from "vue";
+import { useQuasar } from "quasar";
 
 export default {
   setup() {
     const $q = useQuasar();
-
-    const email = ref(null);
-    const password = ref(null);
+    const email = ref("");
     const accept = ref(false);
+    let isDisabled = ref(true);
 
     return {
       email,
-      password,
       accept,
+      isDisabled,
 
-      loginUser() {
-        firebase
-          .auth()
-          .signInWithEmailAndPassword(email.value, password.value)
-          .then((user) => {
-            console.log(user);
-          })
-          .catch((err) => {
-            errorMessage.value = err.message;
-          });
+      enable() {
+        isDisabled.value= !isDisabled.value;
       },
 
+      forgetPassword() {
+        firebase
+          .auth()
+          .sendPasswordResetEmail(email.value)
+          .then(() => {
+            alert("Check your registered email to reset the password!");
+            email.value = "";
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      },
       onSubmit() {
         if (accept.value !== true) {
           $q.notify({
@@ -87,10 +77,6 @@ export default {
             message: "Submitted",
           });
         }
-      },
-
-      reset() {
-        window.location.href = "/#/reset";
       },
     };
   },

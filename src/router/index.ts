@@ -8,6 +8,8 @@ import NotFound from '../components/NotFound.vue'
 import Dashboard from '../components/Dashboard.vue'
 import UserSettings from '../components/UserSettings.vue'
 import About from '../components/About.vue'
+import Calendar from '../components/Calendar.vue'
+import ResetPassword from '../components/ResetPassword.vue'
 
 
 
@@ -30,12 +32,21 @@ const routes: Array<RouteRecordRaw> = [
         }
 
     },
+     {
+        path: '/reset',
+        name: 'Reset',
+        component: ResetPassword,
+          meta: {
+            requiresAuth: false
+        }
+
+    },
     {
         path: '/about',
         name: 'About',
         component: About,
           meta: {
-            requiresAuth: true
+            requiresAuth: false
         }
 
     },
@@ -58,6 +69,15 @@ const routes: Array<RouteRecordRaw> = [
         component: Dashboard,
         meta: {
             requiresAuth: true
+        },
+        
+    },
+    {
+        path: '/calendar',
+        name: 'Calendar',
+        component: Calendar,
+        meta: {
+            requiresAuth: false
         }
     },
     {

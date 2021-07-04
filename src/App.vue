@@ -17,8 +17,10 @@
       <q-tabs align="left">
         <q-route-tab to="/login" label="Login" />
         <q-route-tab to="/register" label="Register" />
-        <q-route-tab to="/error" label="Test" />
+        <q-route-tab to="/calendar" label="calendar" />
         <q-route-tab to="/about" label="About" />
+
+        <q-route-tab to="/error" label="Test" />
         <q-route-tab to="/usersettings" label="Settings" />
         <q-route-tab to="/dashboard" label="Dashboard" />
       </q-tabs>
@@ -45,15 +47,15 @@
             color="indigo-5"
             @click.prevent.stop="logout"
             icon="logout"
-            label="logout"
+            label="Logout"
           />
           <q-fab-action
             color="indigo-6"
             @click="onClick"
-            icon="alarm"
-            label="Alarm"
+            icon="login"
+            label="Login"
           />
-          <q-fab-action
+          <!-- <q-fab-action
             color="indigo-7"
             @click="onClick"
             icon="airplay"
@@ -64,7 +66,7 @@
             @click="onClick"
             icon="room"
             label="Map"
-          />
+          /> -->
         </q-fab>
       </div>
       <router-view />
@@ -118,7 +120,7 @@ export default {
       },
       logout,
       onClick() {
-        // console.log('Clicked on a fab action')
+        window.location.href = "/#/login";
       },
     };
   },
