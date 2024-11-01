@@ -1,0 +1,21 @@
+# Set language for different files in the repository
+*.ts linguist-language=TypeScript
+*.vue linguist-language=Vue
+*.scss linguist-language=SCSS
+*.js linguist-language=JavaScript
+*.config.ts linguist-language=TypeScript
+*.sh linguist-language=Shell
+*.json linguist-language=JSON
+*.yml linguist-language=YAML
+*.html linguist-language=HTML
+
+# Custom language labels for framework-specific files
+vite.config.ts linguist-language=Vite
+*.vite linguist-language=Vite
+
+# Ignore dependencies and build files to avoid skewing language stats
+node_modules/* linguist-vendored
+dist/* linguist-vendored
+coverage/* linguist-vendored
+public/* linguist-vendored
+.env linguist-vendored
