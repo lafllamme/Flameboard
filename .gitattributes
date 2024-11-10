@@ -19,3 +19,4 @@ dist/* linguist-vendored
 coverage/* linguist-vendored
 public/* linguist-vendored
 .env linguist-vendored
+*.css linguist-vendored
